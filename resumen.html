@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resumen de Respuestas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        /* Estilo general */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #6a11cb, #2575fc); /* Gradiente de fondo */
+            color: #ffffff;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            color: #f9f9f9;
+            text-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Contenedor de lista */
+        #answers-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            width: 90%;
+            max-width: 800px;
+        }
+
+        /* Estilo de cada elemento de la lista */
+        #answers-list li {
+            background: rgba(255, 255, 255, 0.1);
+            margin: 15px 0;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s, background-color 0.3s;
+            text-align: left;
+            font-size: 1.2rem;
+        }
+
+        #answers-list li:hover {
+            transform: translateY(-5px);
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        #answers-list li strong {
+            color: #ffd700; /* Dorado para resaltar títulos */
+        }
+
+        /* Botón estilizado */
+        .back-button {
+            font-size: 1.2rem;
+            padding: 12px 30px;
+            margin-top: 30px;
+            background: linear-gradient(135deg, #ff7e5f, #feb47b);
+            color: #ffffff;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .back-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Animación para los elementos */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        #answers-list li {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+    <h1>Resumen de Respuestas</h1>
+    <ul id="answers-list"></ul>
+    <button class="back-button" onclick="goBack()">Nuevo juego</button>
+    <script>
+        // Recuperar las respuestas del almacenamiento local
+        const answersHistory = JSON.parse(localStorage.getItem('answersHistory')) || [];
+        const answersList = document.getElementById("answers-list");
+
+        // Generar dinámicamente los elementos de la lista
+        answersHistory.forEach(answer => {
+            const listItem = document.createElement("li");
+            listItem.innerHTML = `
+                <strong>Pregunta:</strong> ${answer.question} <br>
+                <strong>Respuesta correcta:</strong> ${answer.correctAnswer} <br>
+                <strong>Resultado:</strong> <span style="color: ${answer.isCorrect ? "limegreen" : "red"};">
+                    ${answer.isCorrect ? "Correcto" : "Incorrecto"}
+                </span>
+            `;
+            answersList.appendChild(listItem);
+        });
+
+        // Función para volver al juego
+        function goBack() {
+            window.location.href = "index.html";
+        }
+    </script>
+</body>
+</html>

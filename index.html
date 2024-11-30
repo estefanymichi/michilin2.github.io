@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego Michi de Preguntas</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <div class="michi-container">
+        <div class="michi-cell" onclick="handleCellClick(this, 1)"><span>1</span></div>
+        <div class="michi-cell" onclick="handleCellClick(this, 2)"><span>2</span></div>
+        <div class="michi-cell" onclick="handleCellClick(this, 3)"><span>3</span></div>
+        <div class="michi-cell" onclick="handleCellClick(this, 4)"><span>4</span></div>
+        <div class="michi-cell" onclick="handleCellClick(this, 5)"><span>5</span></div>
+        <div class="michi-cell" onclick="handleCellClick(this, 6)"><span>6</span></div>
+        <div class="michi-cell" onclick="handleCellClick(this, 7)"><span>7</span></div>
+        <div class="michi-cell" onclick="handleCellClick(this, 8)"><span>8</span></div>
+        <div class="michi-cell" onclick="handleCellClick(this, 9)"><span>9</span></div>
+    </div>
+
+    <div id="answer-buttons" class="button-container hidden">
+        <button class="correct" onclick="checkAnswer(true)">Correcto</button>
+        <button class="error" onclick="checkAnswer(false)">Error</button>
+    </div>
+    
+
+    <div id="timer" class="hidden">15</div>
+
+    <div id="winner-message" class="hidden"></div>
+
+    <audio id="background-music" src="" loop></audio>
+    <audio id="tick-tock-sound" src="ticking.mp3"></audio>
+    <audio id="correct-sound" src="correcto.mp3"></audio>
+    <audio id="wrong-sound" src="perder-incorrecto-no-valido.mp3"></audio>
+    <audio id="win-sound" src="we-are-the-champions-queen-ringtones-.mp3"></audio>
+    <audio id="lose-sound" src="loser.m4a"></audio>
+    <div id="winner-message" class="hidden"></div>
+    <button id="restart-button" class="hidden" onclick="resetGame()"> <a href="jugar.html">inicia otro juego</a></button>
+    <div id="answers-summary" class="hidden">
+        <h2>Resumen de Respuestas</h2>
+        <ul id="answers-list"></ul>
+    </div>
+    <div id="winner-image-container" class="hidden">
+        <img id="winner-image" src="" alt="Resultado del juego">
+    </div>
+    <div id="winner-message" class="hidden"></div>
+
+
+    <script src="script.js"></script>
+</body>
+</html>
